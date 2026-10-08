@@ -1,5 +1,9 @@
 var express = require('express');
 
+let configDB = require('./config/db.js');
+
+configDB();
+
 var app = express();
 
 function logger(req, res, next) {
