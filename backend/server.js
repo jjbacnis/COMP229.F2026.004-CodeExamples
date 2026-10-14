@@ -72,10 +72,12 @@ function onError(error) {
 
 function onListening() {
   var addr = server.address();
-  var bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
+  if (typeof addr === 'string') {
+    console.log('==== The app is running on pipe ' + addr);
+    debug('Listening on pipe ' + addr);
+    return;
+  }
 
-  console.log('==== The app is running on http://localhost:' + bind );
-  debug('Listening on ' + bind);
+  console.log('==== The app is running on http://localhost:' + addr.port);
+  debug('Listening on port ' + addr.port);
 }
