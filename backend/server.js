@@ -1,4 +1,3 @@
-
 let configDB = require('./config/db');
 let app = require('./config/express');
 var http = require('http');
