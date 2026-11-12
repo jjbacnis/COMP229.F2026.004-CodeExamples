@@ -5,8 +5,8 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
 
-import DemoComponent from './assets/DemoComponent.jsx';
-import DemoComponent2 from './assets/DemoComponent2.jsx'
+// import DemoComponent from './DemoComponent.jsx';
+import DemoComponent2 from './DemoCompoment2.jsx'
 import Projects from './Pages/Projects.jsx'
 import Services from './Pages/Services.jsx'
 import MainRouter from './mainRouter.jsx'

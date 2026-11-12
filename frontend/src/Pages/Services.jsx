@@ -1,26 +1,25 @@
-import RowComponent from '../Components/RowComponent.jsx';
-import JB_logo from '../assets/JB_logo.png';
+import RowComponent from "../Components/RowComponent.jsx";
+import photo08 from '../assets/photo08.jpg'
+import photo09 from '../assets/photo09.jpg'
 
 function Services() {
-    const data = [
-        {
-            imagePath: JB_logo,
-            text: 'This is the first service description.',
-        },
-        { imagePath: JB_logo, text: 'This is the second service description.' },
-        { imagePath: JB_logo, text: 'This is the third service description.' },
-    ];
-    
+
+const data = [
+     { imagePath: photo08, text: 'This is the first Service Offered' },
+     { imagePath: photo09, text: 'This is the second Service Offered' },
+];
+
     return (
-        <>
+        <div>
+
+            <p>Services</p>
             <div>
-                <h1>Services</h1>
-                <p>This is the Services page.</p>
-                {data.map((element, i) => (
-                    <RowComponent key={i} item={element} />
+                {data.map((item, index) => (
+                    <RowComponent key={index} item={item} />
                 ))}
             </div>
-        </>
+
+        </div>
     );
 }
 

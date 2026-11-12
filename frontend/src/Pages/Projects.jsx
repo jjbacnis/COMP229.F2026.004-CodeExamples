@@ -1,27 +1,31 @@
-import RowComponent from '../Components/RowComponent.jsx';
-import hero from '../assets/hero.png';
+import RowComponent from "../Components/RowComponent.jsx";
+import photo10 from '../assets/photo10.jpg'
+import photo11 from '../assets/photo11.jpg'
+import photo12 from '../assets/photo12.jpg'
 
 function Projects() {
+
     const data = [
         {
-            imagePath: hero,
-            title: 'Item 1',
-            text: 'Description of Item 1',
+            imagePath: photo10,
+            title: 'Title 01',
+            text: 'This is the first item'
         },
-        { imagePath: hero, title: 'Item 2', text: 'Description of Item 2' },
-        { imagePath: hero, title: 'Item 3', text: 'Description of Item 3' },
+        { imagePath: photo11, title: 'Title 02', text: 'This is the second item' },
+        { imagePath: photo12, title: 'Title 03', text: 'This is the third item' },
     ];
-    
+
     return (
-        <>
+        <div>
+
+            <p>Projects</p>
             <div>
-                <h1>Projects</h1>
-                <p>This is the Projects page.</p>
-                {data.map((element, i) => (
-                    <RowComponent key={i} item={element} />
+                {data.map((item, index) => (
+                    <RowComponent key={index} item={item} />
                 ))}
             </div>
-        </>
+
+        </div>
     );
 }
 
