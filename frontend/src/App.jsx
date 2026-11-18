@@ -7,10 +7,10 @@ import './App.css'
 
 // import DemoComponent from './DemoComponent.jsx';
 import DemoComponent2 from './DemoCompoment2.jsx'
-import Projects from './Pages/Projects.jsx'
-import Services from './Pages/Services.jsx'
+import Projects from './pages/Projects.jsx'
+import Services from './pages/Services.jsx'
 import MainRouter from './mainRouter.jsx'
-import Layout from './Components/Layout.jsx'
+import Layout from './components/Layout.jsx'
 
 function App() {
 

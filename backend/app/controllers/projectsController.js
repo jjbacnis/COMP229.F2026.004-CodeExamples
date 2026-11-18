@@ -35,3 +35,23 @@ module.exports.projectsList = async function (req, res, next) {
         next(err);
     }
 };
+
+module.exports.processEdit = async function (req, res, next) {
+    try {
+        let id = req.params.id;
+        let updatedProject = req.body;
+
+        let result = await ProjectsModel.findByIdAndUpdate(id, updatedProject, { new: true });
+
+        res.json(
+            {
+                success: true,
+                message: "Project Updated Successfully",
+                data: result
+            }
+        );
+    } catch (err) {
+        console.log(err);
+        next(err);
+    }
+};

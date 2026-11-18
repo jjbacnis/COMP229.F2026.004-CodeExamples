@@ -1,4 +1,4 @@
-import RowComponent from "../Components/RowComponent.jsx";
+import RowComponent from "../components/RowComponent.jsx";
 import photo10 from '../assets/photo10.jpg'
 import photo11 from '../assets/photo11.jpg'
 import photo12 from '../assets/photo12.jpg'

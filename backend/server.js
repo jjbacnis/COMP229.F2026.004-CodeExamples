@@ -1,7 +1,8 @@
+
 let configDB = require('./config/db');
 let app = require('./config/express');
 var http = require('http');
-var debug = require('debug')('backend:server');
+var debug = require('debug')('comp229:server');
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -71,12 +72,10 @@ function onError(error) {
 
 function onListening() {
   var addr = server.address();
-  if (typeof addr === 'string') {
-    console.log('==== The app is running on pipe ' + addr);
-    debug('Listening on pipe ' + addr);
-    return;
-  }
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
 
-  console.log('==== The app is running on http://localhost:' + addr.port);
-  debug('Listening on port ' + addr.port);
+  console.log('==== The app is running on http://localhost:' + bind );
+  debug('Listening on ' + bind);
 }

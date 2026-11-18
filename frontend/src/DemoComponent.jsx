@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Ingredients from './Components/Ingredients';
+import Ingredients from './components/Ingredients';
 
 function DemoComponent() {
 

@@ -1,12 +1,13 @@
 import React from "react";
 import { Route, Routes } from 'react-router-dom'
 
-import Home from './Pages/Home';
-import AboutMe from './Pages/AboutMe';
-import Projects from "./Pages/Projects";
-import Services from "./Pages/Services";
-import Layout from "./Components/Layout";
-import NotFound from "./Pages/NotFound";
+import Home from './pages/Home';
+import AboutMe from './pages/AboutMe';
+import Projects from "./pages/Projects";
+import Services from "./pages/Services";
+import Layout from "./components/Layout";
+import NotFound from "./pages/NotFound";
+import ListProject from "./components/projects/ListProjects";
 
 function MainRouter (){
     return(
@@ -17,6 +18,7 @@ function MainRouter (){
                 <Route exact path="/about" element={<AboutMe />} />
                 <Route exact path="/projects" element={<Projects />} />
                 <Route exact path="/services" element={<Services />} />
+                <Route exact path="/projects/list" element={<ListProject />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
             

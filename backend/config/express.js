@@ -2,26 +2,26 @@ const express = require('express');
 var createError = require('http-errors');
 var logger = require('morgan');
 var cors = require('cors');
-require('dotenv').config();
 
-// Import Routers
-var indexRouter = require('../app/routers/indexRouter.js');
-var projectsRouter = require('../app/routers/projectsRouter.js');
-var usersRouter = require('../app/routers/usersRouter.js');
-var authRouter = require('../app/routers/auth.js');
+// Import the routers
+var indexRouter = require('../app/routers/index');
+var projectsRouter = require('../app/routers/projects');
+var usersRouter = require('../app/routers/users');
+var authRouter = require('../app/routers/auth');
 
-// Configure Express
+// Config Express
 const app = express();
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Routes
+// Routers
 app.use('/', indexRouter);
-app.use('/api/projects', require('../app/routers/projectsRouter.js'));
-app.use('/api/users', require('../app/routers/usersRouter.js'));
-app.use('/api/auth', require('../app/routers/auth.js'));
+app.use('/api/projects', projectsRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/auth', authRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

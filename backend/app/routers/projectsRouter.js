@@ -5,6 +5,7 @@ var projectsController = require('../controllers/projectsController.js');
 var authController = require('../controllers/auth.js');
 
 router.post('/', projectsController.processAdd);
-router.get('/', authController.logtoken, authController.validateToken, projectsController.projectsList);
+router.get('/', projectsController.projectsList);
+router.put('/:id', projectsController.processEdit);
 
 module.exports = router;

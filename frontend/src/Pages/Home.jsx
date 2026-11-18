@@ -1,17 +1,14 @@
-import Counter from "../counter.jsx";
-import IncrementDecrement from "../IncrementDecrement.jsx";
-import ControlledComponent from "../ControlledComponent.jsx";
+import Counter from "../Counter";
+import ControlledComponent from "../ControlledComponent";
 
 function Home(){
     return(
         <div>
-            <p>Welcome to my portfolio example!</p>
+            <p>Welcome to my portfolio!</p>
             <Counter />
-            <IncrementDecrement />
             <ControlledComponent />
         </div>
     );
 }
-
 
 export default Home;

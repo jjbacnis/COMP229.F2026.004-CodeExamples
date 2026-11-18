@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 export default function ControlledComponent() {
-    const [inputValue, setInputValue] = useState('');
+    const [inputValue, setInputValue] = useState("");
 
     const handleChange = (event) => {
         setInputValue(event.target.value);
@@ -9,7 +9,6 @@ export default function ControlledComponent() {
 
     return (
         <form>
-            <h3>Controlled Component</h3>
             <label>
                 Input Value:
                 <input type="text" value={inputValue} onChange={handleChange} />

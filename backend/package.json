@@ -5,15 +5,14 @@
   "keywords": [
     "COMP229",
     "Express",
-    "MongoDB",
+    "MongoDb",
     "Node"
   ],
   "license": "MIT",
-  "author": "Jordan Bacnis",
+  "author": "Julio Vinicius",
   "type": "commonjs",
-  "main": "server.js",
   "scripts": {
-    "start": "server.js",
+    "start": "node server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -24,7 +23,6 @@
     "http-errors": "^2.0.1",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.11.1",
-    "morgan": "^1.12.1",
-    "nodemon": "^3.1.14"
+    "morgan": "^1.12.1"
   }
 }

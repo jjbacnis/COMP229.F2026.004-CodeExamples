@@ -1,4 +1,4 @@
-import React, {useReducer} from 'react';
+import React, { useReducer } from 'react';
 
 // Define a reducer function
 const reducer = (state, action) => {
@@ -18,12 +18,11 @@ function IncrementDecrement() {
 
     return (
         <div>
-            <h3>Increment/Decrement Component</h3>
             <p>Count: {state.count}</p>
             <button onClick={() => dispatch({ type: 'INCREMENT' })}>Increment</button>
             <button onClick={() => dispatch({ type: 'DECREMENT' })}>Decrement</button>
         </div>
-    )
+    );
 }
 
 export default IncrementDecrement;
