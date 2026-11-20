@@ -7,10 +7,10 @@ import Projects from "./pages/Projects";
 import Services from "./pages/Services";
 import Layout from "./components/Layout";
 import NotFound from "./pages/NotFound";
-import ListProject from "./Components/projects/ListProjects";
-import AddProject from "./Components/projects/AddProject";
-import EditProject from "./Components/projects/EditProject";
-import Signup from "./Components/auth/Signup";
+import ListProject from "./components/projects/ListProjects";
+import AddProject from "./components/projects/AddProject";
+import EditProject from "./components/projects/EditProject";
+import Signup from "./components/auth/Signup";
 
 function MainRouter (){
     return(

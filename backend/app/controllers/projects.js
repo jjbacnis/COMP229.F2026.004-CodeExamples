@@ -1,5 +1,4 @@
 let ProjectsModel = require('../models/projects');
-let mongoose = require('mongoose');
 
 module.exports.processAdd = async function (req, res, next) {
     try {
@@ -42,13 +41,6 @@ module.exports.processEdit = async function (req, res, next) {
 
     try {
         let projectId = req.params.id;
-        if (!mongoose.Types.ObjectId.isValid(projectId)) {
-            return res.status(400).json({
-                success: false,
-                message: "Invalid project ID."
-            });
-        }
-
         let updatedProject = ProjectsModel(req.body);
         updatedProject._id = projectId;
 

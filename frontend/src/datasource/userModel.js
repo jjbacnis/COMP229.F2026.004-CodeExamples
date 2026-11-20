@@ -1,10 +1,10 @@
-class UserModel {
-    constructor(firstName, lastname, email, password){
-        this.id = id;
-        this.firstname = firstName;
-        this.lastname = lastname;
-        this.email = email;
-        this.password = password;
+class UserModel
+{
+    constructor(firstName, lastName, email, password){
+        this.firstName = firstName
+        this.lastName = lastName
+        this.email = email
+        this.password = password
     }
 }
 

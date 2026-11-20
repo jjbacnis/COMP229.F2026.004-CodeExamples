@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { create } from "../../datasource/api-project";
 import ProjectModel from "../../datasource/projectModel";
+import ProjectForm from "./ProjectForm";
 
 
 function AddProject() {
@@ -16,14 +17,15 @@ function AddProject() {
     };
 
     const handleSubmit = (event) => {
-        event.preventDefault(); // cancel the default form submission behavior
+        event.preventDefault(); // cancel the form submission.
 
         create(project)
             .then((res) => {
                 if (res.success) {
                     alert(res.message + " Id: " + res.data.id);
-                    navigate("/projects/list"); // Navigate to the project list page after successful creation
-                } else {
+                    navigate("/projects/list");
+                }
+                else {
                     setErrorMsg(res.message);
                 }
             })
@@ -39,59 +41,11 @@ function AddProject() {
                 <div className="offset-md-3 col-md-6">
                     <h1>Add Project Item</h1>
                     <p className="flash"><span>{errorMsg}</span></p>
-                    <form onSubmit={handleSubmit} className="form">
-                        <input type="hidden" name="id" value={project.id || ""} />
-
-                        <div className="form-group">
-                            <label htmlFor="titleTextField">Title</label>
-                            <input
-                                id="titleTextField"
-                                name="title"
-                                className="form-control"
-                                placeholder="Enter the title of the project"
-                                value={project.title || ""}
-                                onChange={handleChange}
-                                required
-                            />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="CompletionTextField">Completion</label>
-                            <input
-                                id="CompletionTextField"
-                                name="completion"
-                                type="date"
-                                className="form-control"
-                                value={project.completion ? new Date(project.completion).toISOString().split('T')[0] : ""}
-                                onChange={handleChange}
-                            />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="descriptionTextField">Description</label>
-                            <textarea
-                                id="descriptionTextField"
-                                name="description"
-                                className="form-control"
-                                placeholder="Enter the description of the project"
-                                value={project.description || ""}
-                                onChange={handleChange}
-                                required
-                            />
-                        </div>
-
-                        <button className="btn btn-primary" type="submit" onClick={(e) => {
-                            handleSubmit(); // return back one page once the form is submitted
-                            navigate(-1);
-                        }}>
-                            <i className="fas fa-edit"></i> Submit
-                        </button>
-                        &nbsp; &nbsp;
-                        <button className="btn btn-warning" type="button" onClick={() => navigate(-1)} >
-                            <i className="fas fa-undo"></i>
-                            Cancel
-                        </button>
-                    </form>
+                    <ProjectForm 
+                        project={project}
+                        handleChange={handleChange}
+                        handleSubmit={handleSubmit}
+                    />
                 </div>
             </div>
         </div>

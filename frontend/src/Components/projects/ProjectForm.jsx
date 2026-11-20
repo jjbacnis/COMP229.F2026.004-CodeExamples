@@ -1,10 +1,8 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { create } from "../../datasource/api-project";
-import ProjectModel from "../../datasource/projectModel";
 
-function ProjectForm( { handleChange, handleSubmit, project }) {
+function ProjectForm( {project, handleChange, handleSubmit } ) {
     const navigate = useNavigate();
+
     return (
         <form onSubmit={handleSubmit} className="form">
             <input type="hidden" name="id" value={project.id || ""} />
@@ -47,10 +45,7 @@ function ProjectForm( { handleChange, handleSubmit, project }) {
                 />
             </div>
 
-            <button className="btn btn-primary" type="submit" onClick={(e) => {
-                handleSubmit(); // return back one page once the form is submitted
-                navigate(-1);
-            }}>
+            <button className="btn btn-primary" type="submit">
                 <i className="fas fa-edit"></i> Submit
             </button>
             &nbsp; &nbsp;
