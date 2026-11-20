@@ -3,7 +3,78 @@ let apiURL = import.meta.env.VITE_APP_APIURL;
 const list = async ()=>{
     // Retrieve the list of projects
     try {
-        let response = await fetch(apiURL + "/api/projects");
+        let response = await fetch(apiURL + "/api/projects",
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                }
+            }
+        );
+
+        return response.json();
+        
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+const create = async (project)=>{
+    // Add a new project
+    try {
+        let response = await fetch(apiURL + "/api/projects",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(project)
+            }
+        );
+
+        return response.json();
+        
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+const update = async (id, project)=>{
+    // Update an existing project
+    try {
+        let response = await fetch(apiURL + "/api/projects/" + id,
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(project)
+            }
+        );
+
+        return response.json();
+        
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+const remove = async (id)=>{
+    // Delete a project
+    try {
+        let response = await fetch(apiURL + "/api/projects/" + id, {
+            method: "DELETE",
+            headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                }
+        });
 
         return response.json();
         
@@ -12,4 +83,22 @@ const list = async ()=>{
     }
 }
 
-export { list }
+const getone = async (id)=>{
+    // Get a single project
+    try {
+        let response = await fetch(apiURL + "/api/projects/" + id, {
+            method: "GET",
+            headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                }
+        });
+
+        return response.json();
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export { list, create, remove, update, getone };

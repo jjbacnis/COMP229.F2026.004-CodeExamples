@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import { list } from '../../datasource/api-project';
+import ListProjectItem from './ListProjectItem';
 
 function ListProject() {
     const [projectList, setProjectList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [errorMsg, setErrorMsg] = useState('')
 
     const LoadProject = () => {
         list()
@@ -13,10 +15,11 @@ function ListProject() {
                     setProjectList(res.data || []);
                 }
                 else{
-                    alert(res.message);
+                    setErrorMsg(res.message);
                 }
             })
             .catch((err) => {
+                setErrorMsg(err.message);
                 console.log(err);
             })
             .finally(()=>{
@@ -33,9 +36,9 @@ return (
         <main className="container">
             <div className="row">
                 <h1>Project List</h1>
-
+                <p className="flash"><span>{errorMsg}</span></p>
                 <div>
-                    <Link to="/project/add" className="btn btn-primary align-self-end" role="button">
+                    <Link to="/projects/add" className="btn btn-primary align-self-end" role="button">
                         <i className="fas fa-plus-circle"></i>
                         Add a new Item
                     </Link>
@@ -59,24 +62,11 @@ return (
                             </thead>
                             <tbody>
                                 {/* -- Repeatable Template Row -- */}
-                                {projectList.map(project =>
-                                    <tr >
-                                        <td className="text-center"> {project.title || ''} </td>
-                                        <td className="text-center"> {project.completion ? new Date(project.completion).toLocaleDateString() : ''} </td>
-                                        <td className="text-center"> {project.description || ''} </td>
-                                        <td className="text-center">
-                                            <Link className="btn bg-primary btn-primary btn-sm" to={'/project/edit/' + project.id}>
-                                                <i className="fas fa-pencil-alt"></i>
-                                            </Link>
-                                        </td>
-                                        <td className="text-center">
-                                            <button
-                                                className="btn bg-danger btn-danger btn-sm"
-                                                onClick={() => handleRemove(project.id)}>
-                                                <i className="fas fa-trash-alt"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                {projectList.map(projectItem =>
+                                    <ListProjectItem
+                                        key={projectItem.id}
+                                        project={projectItem}
+                                        onRemove={LoadProject} />
                                 )}
                             </tbody>
                         </table>}

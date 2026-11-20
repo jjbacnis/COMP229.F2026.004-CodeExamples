@@ -11,7 +11,7 @@ router.put('/:id', projectsController.processEdit);
 
 router.delete('/:id', projectsController.processDelete);
 
-router.post('/', projectsController.processAdd);
+router.post('/', authController.logtoken, projectsController.processAdd);
 
 
 module.exports = router;
