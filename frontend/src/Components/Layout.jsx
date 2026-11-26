@@ -53,8 +53,8 @@ const Header = () => {
                 </ul>
               </li >
               <li className="nav-item">
-                <NavLink className="nav-link" to="/users/signup">
-                  <i className="fas fa-user"></i> Users
+                <NavLink className="nav-link" to="/users/signin">
+                  <i className="fas fa-user"></i> Sign In
                 </NavLink>
               </li >
             </ul >

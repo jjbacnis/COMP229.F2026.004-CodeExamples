@@ -18,6 +18,7 @@ module.exports.signin = async function (req, res, next) {
         let payload = {
             id: user._id,
             email: user.email,
+            username: user.fullName,
             admin: user.admin
         }
 

@@ -10,7 +10,7 @@ router.get('/:id', projectsController.getByID);
 router.delete('/:id', projectsController.processDelete);
 
 router.put('/:id', projectsController.processEdit);
-router.post('/', authController.logtoken, projectsController.processAdd);
+router.post('/', authController.validateToken, authController.logtoken, projectsController.processAdd);
 
 
 module.exports = router;

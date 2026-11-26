@@ -21,4 +21,25 @@ const create = async (user) => {
     }
 }
 
-export { create }
+const signin = async (cred) => {
+    // Authenticate an user
+    try {
+        let response = await fetch(apiURL + "/api/auth/signin",
+            {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(cred)
+            }
+        );
+
+        return response.json();
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export { create, signin }

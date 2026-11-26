@@ -1,4 +1,5 @@
 let apiURL = import.meta.env.VITE_APP_APIURL;
+import { getToken } from "../components/auth/auth-helper";
 
 const list = async () => {
     // Retrieve the list of projects
@@ -28,7 +29,8 @@ const create = async (project) => {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json'
+                    'Accept': 'application/json',
+                    'Authorization': 'Bearer ' + getToken()
                 },
                 body: JSON.stringify(project)
             }
