@@ -6,10 +6,10 @@ var authController = require('../controllers/auth');
 
 router.get('/', projectsController.projectsList);
 
-router.get('/:id', projectsController.getByID);
-router.delete('/:id', projectsController.processDelete);
+router.get('/:id', authController.validateToken, authController.logtoken, projectsController.getByID);
+router.delete('/:id', authController.validateToken, authController.logtoken, projectsController.hasAuthorization, projectsController.processDelete);
 
-router.put('/:id', projectsController.processEdit);
+router.put('/:id', authController.validateToken, authController.logtoken, projectsController.hasAuthorization, projectsController.processEdit);
 router.post('/', authController.validateToken, authController.logtoken, projectsController.processAdd);
 
 

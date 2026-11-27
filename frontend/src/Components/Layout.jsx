@@ -1,10 +1,15 @@
 import { Outlet, NavLink, Link, useLocation } from "react-router-dom";
 import image_logo from "../assets/image_logo.png"
+import { isAuthenticated, getUsername, clearJWT } from "../Components/auth/auth-helper";
 
 const Header = () => {
 
   const location = useLocation();
-  
+
+  const signoutClick = () => {
+    clearJWT();
+  }
+
   return (
     <>
       {/* -- Main Nav bar  -- */}
@@ -53,16 +58,26 @@ const Header = () => {
                 </ul>
               </li >
               <li className="nav-item">
-                <NavLink className="nav-link" to="/users/signin">
-                  <i className="fas fa-user"></i> Sign In
+                <NavLink className="nav-link" to="/users/list">
+                  <i className="fas fa-user"></i> Users
                 </NavLink>
               </li >
+              <li className="nav-item">
+                {!isAuthenticated() &&
+                  <NavLink className="nav-link" to="/users/signin">
+                    <i className="fa-solid fa-right-to-bracket"></i> Signin
+                  </NavLink>}
+                {isAuthenticated() &&
+                  <Link className="nav-link" to="/" onClick={signoutClick}>
+                    <i className="fa-solid fa-right-from-bracket"></i> Sign-out ({getUsername()})
+                  </Link>}
+              </li>
             </ul >
           </div>
         </div>
       </nav >
-        <div className="container" style={{ paddingBottom: 80 }}></div>
-    
+      <div className="container" style={{ paddingBottom: 80 }}></div>
+
       <Outlet />
     </>
   )

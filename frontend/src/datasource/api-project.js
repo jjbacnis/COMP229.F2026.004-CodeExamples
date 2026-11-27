@@ -51,7 +51,8 @@ const update = async (id, project) => {
                 method: "PUT",
                 headers: {
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json'
+                    'Accept': 'application/json',
+                    'Authorization': 'Bearer ' + getToken()
                 },
                 body: JSON.stringify(project)
             }
@@ -71,7 +72,8 @@ const remove = async (id) => {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + getToken()
             },
         });
 
@@ -89,7 +91,8 @@ const getone = async (id) => {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + getToken()
             },
         });
 

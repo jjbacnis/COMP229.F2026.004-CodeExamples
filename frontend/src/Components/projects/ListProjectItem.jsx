@@ -1,27 +1,31 @@
 import { Link } from "react-router-dom";
 import { remove } from "../../datasource/api-project";
+import { isAuthenticated } from "../auth/auth-helper";
 
 
 function ListProjectItem({ project, onRemove }) {
 
-    const handleRemove = (id)=>{
+    const handleRemove = (id) => {
 
-        if(window.confirm('Are you sure you want to delete this item?')){
-            remove(id)
-                .then((res)=>{
-                    if(res.success){
-                        window.alert(res.message);
-                        onRemove();
-                    }
-                    else{
-                        window.alert(res.message);
-                    }
-                })
-                .catch((err)=>{
-                    console.log(err);
-                    window.alert(err.message);
-                })
-        }
+        if (!isAuthenticated())
+            window.alert('You are not authenticated. Please, proceed with sign-in first.')
+        else
+            if (window.confirm('Are you sure you want to delete this item?')) {
+                remove(id)
+                    .then((res) => {
+                        if (res.success) {
+                            window.alert(res.message);
+                            onRemove();
+                        }
+                        else {
+                            window.alert(res.message);
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        window.alert(err.message);
+                    })
+            }
 
     }
 

@@ -5,7 +5,12 @@ let projectsModel = mongoose.Schema(
         title: String, 
         completion: Date, 
         description: String, 
-        image: String 
+        image: String ,
+        // Adds relationship with User
+        owner: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        }
     },
     {
         collection: "projects"

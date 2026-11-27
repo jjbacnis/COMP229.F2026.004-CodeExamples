@@ -10,6 +10,13 @@ const authenticate = (token, cb)=>{
     cb();
 }
 
+const isAuthenticated = ()=>{
+  if (typeof window === "undefined") {
+    return false;
+  }
+  return !!sessionStorage.getItem('token');
+}
+
 const getToken = ()=>{
   if (typeof window === "undefined") {
     return false;
@@ -17,4 +24,18 @@ const getToken = ()=>{
   return sessionStorage.getItem('token');
 }
 
-export {authenticate, getToken} 
+const getUsername = ()=>{
+  if (typeof window === "undefined") {
+    return false;
+  }
+  return sessionStorage.getItem('username');
+}
+
+const clearJWT = ()=>{
+  if (typeof window !== "undefined") {
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('username');
+  }
+}
+
+export {authenticate, getToken, isAuthenticated, getUsername, clearJWT} 

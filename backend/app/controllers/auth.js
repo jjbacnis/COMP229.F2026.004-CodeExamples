@@ -44,6 +44,7 @@ module.exports.signin = async function (req, res, next) {
 
 module.exports.logtoken = async function (req, res, next) {
     console.log(req.headers);
+    console.log(req.auth);
     next();
 }
 

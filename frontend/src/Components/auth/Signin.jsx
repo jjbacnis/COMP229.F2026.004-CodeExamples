@@ -1,9 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react"
 import { signin } from "../../datasource/api-user";
 import { authenticate } from "./auth-helper";
 
 const Signin = () => {
+    const { state } = useLocation();
+    const { from } = state || { from: { pathname: '/' } };
 
     let navigate = useNavigate();
     let [user, setUser] = useState({
@@ -22,8 +24,8 @@ const Signin = () => {
 
         signin(user).then(data => {
             if (data && data.success) {
-                authenticate(data.token, ()=>{
-                    navigate("/");
+                authenticate(data.token, () => {
+                    navigate(from, {replace: true});
                 })
             }
             else {
